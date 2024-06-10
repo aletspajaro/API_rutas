@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/608/608769.png">
+    <title>Rutas</title>
+</head>
+<body bgcolor="#A5D6A7">
+    <center>
+    <h1>!Que maravilla¡</h1>
+    <img src="https://img.freepik.com/vector-premium/ruta-entrega-seguimiento-entregas-servicio-envio-iconos_186930-800.jpg?w=2000" width="500" style="background: fixed;">
+
+    <h2>Capacidad Máxima de Carga:</h2>
+    <p>{{ maxcarga }}</p>
+    
+    <h2>Encontramos esta ruta adecuada para ti:</h2>
+    <ul>
+        {% for ruta in rutas %}
+            {% set mostrar_ruta = false %}
+            <li>
+                <ul>
+                    {% for ciudad in ruta %}
+                        {% if pedidos[ciudad] > 0 %}
+                            {% set mostrar_ruta = true %}
+                            <li>{{ ciudad }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+            {% if mostrar_ruta %}
+                <br>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    
+    <!-- Puedes mostrar más información o resultados adicionales aquí -->
+
+    
+</center>
+</body>
+</html>
